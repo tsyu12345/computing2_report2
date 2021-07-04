@@ -1,0 +1,61 @@
+\documentclass[dvipdfmx]{jsarticle}
+\usepackage[T1]{fontenc}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{lmodern}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{here}
+\usepackage{float}
+\usepackage{ascmac}
+\usepackage{url}
+
+\title{オプション価格の決定-課題研究２-}
+\author{文理学部情報科学科\\5419045 高林 秀}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+本稿は、疑似乱数とモンテカルロシミュレーションの考え利用して、今年度コンピューティング2の課題を解くものである。なお、本課題ではp5.jsを使用した。
+\end{abstract}
+
+\section{目的}
+本稿は、今年度コンピューティング2の課題研究として「疑似乱数とモンテカルロシミュレーション」に関する問題に解答するものである。また同時に、問題に関する計算理論についても復習するものとする。
+\section{計算理論}
+\subsection{疑似乱数}
+まず、乱数とはなにかについて説明する。乱数とは「ランダムな数こと」である。より厳密には、今得られている数列から、次の数列の値が予測できないような、いわゆる乱数列の各要素のことを乱数という。\par
+コンピュータ上では乱数は様ざなま場面で利用されている。しかし、我々の知るコンピュータは決定性のある計算機であるため、コンピュータが乱数を生成するときはある計算法によって乱数を算出している。このように、コンピュータ上で実現される乱数を「擬似乱数」と呼ぶ。擬似乱数は、人間から見たときにランダムに値を生成するのであって、実際はある計算から導き出された値を使用している。\par
+このような擬似乱数の生成方法の一つとして「線形合同法」が挙げられる。
+\subsubsection{線形合同法}
+擬似乱数生成のアルゴリズムの一つで、生成される乱数は下記式で示される。
+\begin{center}
+  \begin{align*}
+    ・生成される乱数列をX_{0}, X_{1}, X_{2}...とし、この各要素は\\
+    X_{n+1} = aX_{n} + b mod m
+  \end{align*}
+\end{center}
+このとき、$a, b, m$は乱数列を決定するパラメーターとなる。このとき、各パラメーターは$a < m, b < m, a > 0, b \geq 0$である必要がある。
+$X_{n}$を使用して、$Y_{L}以上Y_{U}未満の実数値Y_{n}$を生成するときは下記式を使用する。
+\begin{center}
+  \begin{align*}
+    Y_{n} = \frac{X_{n}}{m}(Y_{U}-Y_{L})+Y_{L}
+  \end{align*}
+\end{center}
+\subsection{モンテカルロシミュレーション}
+\subsection{確率分布}
+\subsection{ランダムウォーク}
+
+\section{実験方法}
+\section{結果と考察}
+\section{まとめ}
+\section{付録}
+
+\end{document}
