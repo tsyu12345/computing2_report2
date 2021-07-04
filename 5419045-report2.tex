@@ -156,16 +156,80 @@ $a以上b未満の一様乱数をU(a,b)と表記するとき、U(a, b)の確率�
 \end{center}
 \paragraph{正規分布に従う乱数の生成}
 正規分布の分布関数の逆関数は求めることができない。\par
-そこでまず、標準正規分布の分布関数を2次元で図示したときの上から見た図(下図)上の任意の点$(x,y)$における、原点(0, 0)との距離$R$と、2点を結ぶん辺のなす角$\theta$とする。
+そこでまず、標準正規分布の分布関数を2次元で図示したときの上から見た図(下図)上の任意の点$(x,y)$における、原点(0, 0)との距離$R$と、2点を結ぶん辺のなす角を$\theta$とする。\par
+このとき正規分布は独立な確率変数$R \simeq Exp(2), \theta \simeq U(0, 2\pi)$で次のように示すことができる。
+\begin{center}
+  \begin{align*}
+    N(0, 1) = \sqrt{R}cos\theta
+  \end{align*}
+\end{center}
+これは、$R, \theta$を得ることができれば、標準正規分布を得ることができることを意味している。これを、Box-Muller法と呼ぶ。
+\paragraph{Poisson分布(ポアソン分布)に従う乱数の生成}
+Poisson分布とは、単位時間あたり平均して$\lambda$回生起する事象が、単位時間に$k$回生起する確率を示すのに使用される確率分布のことを意味する。この様な事象は一般的に、下記式で示されることが知られている。
+\begin{center}
+  \begin{align*}
+    P(k) = \frac{\lambda^{k}e^{-\lambda}}{k!}
+  \end{align*}
+\end{center}
+特に、確率変数$X$が上記式を満たしているとき、確率変数$X$はパラメータ$\lambda$のPoisson分布に従っている、という。
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.3]{poi_fig_1.jpg}
+  \caption{Poisson分布の一例}
+  \url{https://recruit.cct-inc.co.jp/tecblog/machine-learning/poisson/}
+\end{figure}
+ある事象が、時間的に一様に生起する時、単位時間あたりその事象の生起回数は、Poisson分布に従うことが知られている。Poisson分布の確率分布を$Po(\lambda)$とするとき、その期待値は$\lambda$になる。\par
+Poisson分布に従った乱数は、指数分布$Exp(\lambda)$を用いて生成することができる。つまり、指数分布に従っている事象が一定間隔に何回生起したか数えることによりPoisson分布に従った乱数を生成することができる。なお、Poisson分布は離散的な確率分布であることに留意する必要がある。\par
 
-\paragraph{Poisson分布に従う乱数の生成}
 p5.jsでは、$randomGaussian()$関数によって、標準正規分布に従う乱数列を生成することができるが、上記に列挙した標準正規分布以外の分布で乱数列を生成するときは自身でコードを作成し、実装する必要がある。
-
-
 \subsection{ランダムウォーク}
+ある値が、一定時間ごとに過去の状態に依存せず、ランダムに変動するような事象をランダムウォークと呼ぶ。ある値、$SがS_{0}から始まり、時刻i-1とiの間のSの変化量確率変数X_{i}\simeq Fと示されるとき、時刻tにおけるS値S_{t}は次のように示すことができる。$
+\begin{center}
+  \begin{align*}
+    S_{t} = S_{0} + \Sigma_{i=1}^{t}X_{i}
+  \end{align*}
+\end{center}
+ランダムウォークは、ブラウン運動\footnote{微粒子が分子と衝突した際に起きる不規則な運動のこと}等の物理現象と結び付けられて解析が行われることが多い。その他にも、株価の変動をランダムウォークとみなし、利益や損失の推定を行うことがある。
 
+ランダムウォークは、異なる時点$i, j$における確率変数$X_{i}, X_{j}$は独立であるという特徴を持つ。この時、$X_{i}の期待値E|X_{i}| = \mu 、分散をV|X_{i}| = \sigma^{2}$で示すと、$S_{t}における期待値とその分散は次のようになる$。
+\begin{center}
+  \begin{align*}
+    E|S_{t}| = S_{0} + t\mu \\
+    V|S_{t}| = t\sigma^{2}
+  \end{align*}
+\end{center}
 \section{実験方法}
+\subsection{計算機環境}
+本課題を解いた際の計算機環境を下記に示す。
+\begin{itemize}
+  \item ホストOS：Window10 Home Ver.20H2
+  \item 仮想OS：Ubuntu 20.04.2 LTS
+  \item CPU：Intel(R)Core(TM)i7-9700K @ 3.6GHz
+  \item GPU：Nvidia Geforce RTX2070 OC @ 8GB
+  \item ホストRAM：16GB
+  \item 仮想RAM：4GB
+\end{itemize}
+\subsection{課題}
+現在A社の株価は10000円である。A社のかk部下は毎日正規分布$N(5, 200^{2})$に従って変動する。365日後にこの株を、株価の変動によらず10000で買う権利をオプjションと呼ぶ。買い手は売り手からこのオプションを手数料$X$円で購入する。例えば、365日後に株価が12000円となった場合、オプション行使することで差額から手数料を引いた$2000-X$円だけ書いては得をする。このとき売り手は$X-2000$円の損をする、また、365日後に株価が8000円となった場合、オプションを行使しないことで買い手の損失は手数料の$X$円分だけでよくなる。このとき売り手は$X$円の損をする。
+\begin{table}[H]
+  \begin{center}
+    \begin{tabular}{|c|c|c|} \hline
+      365日後の株価の変動$Y$ & 買い手の損得(円) & 売り手の損得(円) \\ \hline
+      $Y > 0$ & $Y - X$ & $X - Y$ \\
+      $Y \leq 0$ & $-X$ & $X$ \\ \hline
+    \end{tabular}
+    \label{hyo02}
+  \end{center}
+\end{table}
+\paragraph{Q１}365日後の株価の期待値をモンテカルロシミュレーションによって求めよ。
+\paragraph{Q２}Q1で得られた株価の変動について十分な回数試行を行い365日後の株価のヒストグラムを画面に描画せよ。
+\paragraph{Q３}売り手が収入の期待値がマイナスにならないようにコールオプションを販売するとき、コールオプションの価格はいくらにすれば良いか、モンテカルロシミュレーションを用いて検討せよ。
 \section{結果と考察}
+\paragraph{Q1}
+下記に添付したJavaScript(p5.js)よって求めた。その結果を以下に示す。
+\begin{itemize}
+  \item Q1.js : \url{}
+\end{itemize}
 \section{まとめ}
 \section{付録}
 

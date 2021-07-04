@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190908-2.6 (utf8.euc) (TeX Live 2019/Debian) (preloaded format=platex 2021.5.19)  4 JUL 2021 18:36
+This is e-pTeX, Version 3.14159265-p3.8.2-190908-2.6 (utf8.euc) (TeX Live 2019/Debian) (preloaded format=platex 2021.5.19)  4 JUL 2021 22:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -578,25 +578,33 @@ File: 795316b92fc766b0181f6fef074f03fa-8.png Graphic file (type bmp)
 <795316b92fc766b0181f6fef074f03fa-8.png>
 File: sisuu.png Graphic file (type bmp)
 <sisuu.png>
- [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 171.
- [5] [6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 171.
+ [4] [5]
+File: poi_fig_1.jpg Graphic file (type bmp)
+<poi_fig_1.jpg>
+ [6]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
+05.
 
-(./5419045-report2.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 171.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 171.
+(/usr/share/texmf/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 236.
+ [8]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 236.
+ (./5419045-report2.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 236.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 236.
 Package rerunfilecheck Info: File `5419045-report2.out' has not changed.
-(rerunfilecheck)             Checksum: 6B0B1EBDA2FEAFC04E77ED276EFAFEB5;557.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 171.
+(rerunfilecheck)             Checksum: B412A962DEBEF79E1F082CEA4E4FDE81;678.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 236.
  ) 
 Here is how much of TeX's memory you used:
- 7451 strings out of 482863
- 109705 string characters out of 5959218
- 372942 words of memory out of 5000000
- 22565 multiletter control sequences out of 15000+600000
- 601164 words of font info for 119 fonts, out of 8000000 for 9000
+ 7489 strings out of 482863
+ 110618 string characters out of 5959218
+ 373977 words of memory out of 5000000
+ 22597 multiletter control sequences out of 15000+600000
+ 601529 words of font info for 120 fonts, out of 8000000 for 9000
  269 hyphenation exceptions out of 8191
  37i,9n,29p,693b,495s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 5419045-report2.dvi (6 pages, 20796 bytes).
+Output written on 5419045-report2.dvi (8 pages, 29568 bytes).
